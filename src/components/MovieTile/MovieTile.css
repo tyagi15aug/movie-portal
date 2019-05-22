@@ -1,0 +1,28 @@
+.movieTileWrapper{
+  margin: 25px;
+}
+
+.movieTileContent{
+  display: flex;
+  flex-direction: row;
+}
+
+.moviePoster{
+  width: 300px;
+  height: 445px;
+}
+
+.movieDetails{
+  display: flex;
+  width: 100%;
+  margin: 0 50px;
+  flex-direction: column;
+}
+
+.movieTitle{
+  font-size: 14,
+}
+
+.movieYear{
+  margin-bottom: 10px;
+}
