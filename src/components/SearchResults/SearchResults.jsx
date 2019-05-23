@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { MovieTile } from "../MovieTile";
 import { requestMovieDetails } from "../../store";
 
+import "./SearchResults.css";
+
 function mapStateToProps(state) {
   return {
     results: state.searchResults.Search
@@ -12,20 +14,26 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    showDetails: (imdbID) => dispatch(requestMovieDetails(imdbID))
+    showDetails: imdbID => dispatch(requestMovieDetails(imdbID))
   };
 }
 
 class SearchResultsComponent extends Component {
-  showDetails = (imdbID) => {
-    this.props.showDetails(imdbID)
-  }
+  showDetails = imdbID => {
+    this.props.showDetails(imdbID);
+  };
 
   render() {
     return (
-      <div>
+      <div className="searchResultWrapper">
         {get(this.props, "results") ? (
-          this.props.results.map(item => <MovieTile data={item} key={item.imdbID} onShowDetails={(event) => this.showDetails(item.imdbID)} />)
+          this.props.results.map(item => (
+            <MovieTile
+              data={item}
+              key={item.imdbID}
+              onShowDetails={event => this.showDetails(item.imdbID)}
+            />
+          ))
         ) : (
           <span />
         )}

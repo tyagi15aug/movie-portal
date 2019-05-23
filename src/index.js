@@ -5,9 +5,15 @@ import { reducer as formReducer } from "redux-form";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import { searchMovies, moviesReducer, rootSaga, movieDetailsReducer } from "./store";
+import {
+  searchMovies,
+  moviesReducer,
+  rootSaga,
+  movieDetailsReducer
+} from "./store";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { SearchBar, SearchResults } from "./components";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -28,6 +34,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="appContainer">
+        <AppBar position="sticky" color="primary">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              OMDb Search
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <SearchBar onSubmit={this.submit} />
         <SearchResults />
       </div>

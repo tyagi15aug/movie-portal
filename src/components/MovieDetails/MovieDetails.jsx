@@ -61,6 +61,7 @@ class MovieDetailsComponent extends Component {
         renderItem = (
           <div className="movieRatingWrapper">
             <img
+              alt="Internet Movie Database"
               className="movieRatingIcon"
               src="http://aux.iconspalace.com/uploads/imdb-icon-256-322875901.png"
             />
@@ -73,6 +74,7 @@ class MovieDetailsComponent extends Component {
         renderItem = (
           <div className="movieRatingWrapper">
             <img
+              alt="Rotten Tomatoes"
               className="movieRatingIcon"
               src="http://chittagongit.com/images/rotten-tomatoes-icon/rotten-tomatoes-icon-21.jpg"
             />
@@ -85,6 +87,7 @@ class MovieDetailsComponent extends Component {
         renderItem = (
           <div className="movieRatingWrapper">
             <img
+              alt="Metacritic"
               className="movieRatingIcon"
               src="https://pbs.twimg.com/profile_images/527528131171590144/EQXs3lpX.png"
             />
@@ -92,6 +95,9 @@ class MovieDetailsComponent extends Component {
             <div>{item.Value}</div>
           </div>
         );
+        break;
+      default:
+        renderItem = <div className="movieRatingWrapper" />;
         break;
     }
     return renderItem;
