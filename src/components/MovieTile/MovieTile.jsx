@@ -3,22 +3,25 @@ import { get } from "lodash";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 import "./MovieTile.css";
+import { MovieDetails } from "../MovieDetails";
 
 export const MovieTile = props => {
   const posterImage =
     get(props, "data.Poster") === "N/A"
-      ? "http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png"
+      ? "./assets/posterPlaceholder.png"
       : get(props, "data.Poster");
   const imdbLink = `https://www.imdb.com/title/${get(props, "data.imdbID")}/`;
   return (
     <div>
       <Card className="movieTileWrapper">
         <CardContent className="movieTileContent">
-          <img
-            src={posterImage}
-            alt={props.data.imdbID}
-            className="moviePoster"
-          />
+          <div className="moviePosterWrapper">
+            <img
+              src={posterImage}
+              alt={props.data.imdbID}
+              className="moviePoster"
+            />
+          </div>
           <div className="movieDetails">
             <Typography variant="h5" component="h2">
               {props.data.Title}
@@ -27,8 +30,9 @@ export const MovieTile = props => {
               {props.data.Year}
             </Typography>
             <a href={imdbLink} target="_blank" rel="noopener noreferrer">
-              Goto imdb page
+              Goto IMDb
             </a>
+            <MovieDetails imdbID={props.data.imdbID} />
           </div>
         </CardContent>
       </Card>

@@ -1,28 +1,36 @@
-.movieTileWrapper{
+.movieTileWrapper {
   margin: 25px;
 }
 
-.movieTileContent{
+.movieTileContent {
   display: flex;
   flex-direction: row;
 }
 
-.moviePoster{
-  width: 300px;
-  height: 445px;
+.moviePosterWrapper {
+  min-width: 150px;
+  max-width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-.movieDetails{
+.moviePoster {
+  width: 100%;
+}
+
+.movieDetails {
   display: flex;
   width: 100%;
   margin: 0 50px;
   flex-direction: column;
 }
 
-.movieTitle{
-  font-size: 14,
+.movieTitle {
+  font-size: 14;
 }
 
-.movieYear{
+.movieYear {
   margin-bottom: 10px;
 }

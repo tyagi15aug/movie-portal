@@ -1,0 +1,35 @@
+.movieDetailsButton {
+  width: 150px;
+}
+
+.movieYear {
+  color: grey;
+  font-size: 11px;
+  margin-left: 10px;
+}
+
+.movieGenre {
+  margin: 0 5px;
+}
+
+.movieSection {
+  margin: 15px 0px;
+}
+
+.movieSectionHeading {
+  font-weight: 600;
+}
+
+.movieRatingIcon {
+  height: 25px;
+}
+
+.movieRatingsWrapper,
+.movieRatingWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.movieRatingWrapper {
+  margin: 0px 10px;
+}

@@ -1,36 +1,10 @@
-import axios from "axios";
-import { get } from 'lodash';
-import { all, call, put, takeLatest } from "redux-saga/effects";
-import { SEARCH_MOVIES, dataReceived } from "../actions";
-
-function fetchAPIData(queryData) {
-  let query = get(queryData,'query', '');
-  let type = get(queryData,'type', '');
-  let year = get(queryData,'year', '');
-  let page = get(queryData,'page', 1);
-  let URL = `http://www.omdbapi.com/?apikey=50e2b0ce&s=${query}&y=${year}&type=${type}&page=${page}`
-  return axios.request({
-    method: 'get',
-    url: URL
-  });
-}
-
-function* searchMoviesEffectsSaga(action) {
-  try {
-    let { data } = yield call(fetchAPIData, action.queryObject);
-    yield put(dataReceived(data));
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-export function* searchMoviesWatcherSaga() {
-  yield takeLatest(SEARCH_MOVIES, searchMoviesEffectsSaga);
-}
+import { all, fork } from 'redux-saga/effects';
+import { searchMoviesSaga } from './searchMoviesSaga';
+import { movieDetailsSaga } from './movieDetailsSaga';
 
 export function* rootSaga() {
-  yield all([
-    searchMoviesEffectsSaga(),
-    searchMoviesWatcherSaga()
-  ])
+    yield all([
+        fork(searchMoviesSaga),
+        fork(movieDetailsSaga),
+    ]);
 }
